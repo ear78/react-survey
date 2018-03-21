@@ -7,8 +7,17 @@ const keys = require('../config/keys');
 //pulling in model class from User.js and 'users'
 const User = mongoose.model('users');
 
+//serializing for cookies
 passport.serializeUser((user, done) => {
 	done(null, user.id);
+})
+
+//deserialize back to user model
+passport.deserializeUser((id, done) => {
+	User.findById(id)
+	.then((user) => {
+		done(null, user);
+	})
 })
 
 passport.use(new GoogleStrategy({
