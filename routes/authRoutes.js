@@ -15,7 +15,7 @@ module.exports = (app) => {
     //LOGOUT ENDPOINT
     app.get('/api/logout', (req,res) => {
         req.logout();
-        res.send(req.user);
+        res.redirect('/');
     });
 
     //GET CURRENT USER

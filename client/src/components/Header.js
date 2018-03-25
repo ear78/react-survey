@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 class Header extends React.Component{
 
     renderContent() {
+        console.log(this.props)
         switch (this.props.auth) {
             case null:
                 return;
@@ -27,7 +28,7 @@ class Header extends React.Component{
         return (
                 <nav>
                     <div className="nav-wrapper">
-                      <Link to="/" className="brand-logo">Emaily</Link>
+                      <Link to={this.props.auth ? '/surveys' : '/'} className="left brand-logo">Emaily</Link>
                       <ul className="right">
                         {this.renderContent()}
                       </ul>
